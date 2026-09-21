@@ -185,6 +185,21 @@
   .item h4{margin:0 0 4px; font-size:1rem; font-weight:600;}
   .item .price{font-size:0.9rem; color:var(--terracotta); font-weight:700; flex:none;}
 
+  .gallery-wrap{background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .gallery-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:16px;}
+  .gallery-card{position:relative; overflow:hidden; border-radius:18px; border:1px solid var(--line); background:var(--card); box-shadow:var(--shadow); cursor:pointer; aspect-ratio:4/5;}
+  .gallery-card img{width:100%; height:100%; object-fit:cover; transition:transform .25s ease;}
+  .gallery-card:hover img{transform:scale(1.04);}
+  .gallery-card span{position:absolute; left:12px; bottom:12px; background:rgba(17,17,17,0.62); color:#fff; padding:7px 10px; border-radius:999px; font-size:0.72rem; font-weight:600; letter-spacing:.04em; backdrop-filter:blur(2px);}
+  @media (max-width:920px){ .gallery-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:540px){ .gallery-grid{grid-template-columns:1fr;} }
+
+  .lightbox{position:fixed; inset:0; display:none; place-items:center; background:rgba(15,10,8,0.82); z-index:80; padding:22px;}
+  .lightbox.open{display:grid;}
+  .lightbox-content{position:relative; max-width:min(900px,90vw); max-height:86vh; background:#000; border-radius:20px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.4);}
+  .lightbox-content img{display:block; max-width:100%; max-height:86vh; object-fit:contain;}
+  .lightbox-close{position:absolute; top:12px; right:12px; width:38px; height:38px; display:grid; place-items:center; border:none; border-radius:50%; background:rgba(255,255,255,0.9); font-size:1.3rem; cursor:pointer;}
+
   .combos{background:var(--ink); color:var(--cream); border-radius:28px; margin:0 20px; padding:44px 32px;}
   @media (max-width:600px){ .combos{margin:0 12px; padding:34px 20px;} }
   .combos .section-head p{color:rgba(251,241,222,0.7);}
@@ -257,6 +272,7 @@
     </a>
     <nav class="links">
       <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
       <a href="#ambience">Ambience</a>
       <a href="#booking">Book a table</a>
       <a href="#visit">Visit</a>
@@ -355,6 +371,32 @@
     </div>
   </section>
 
+  <section class="gallery-wrap" id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow-plain">Gallery</p>
+        <h2>See what’s cooking at Tealogy</h2>
+        <p>From signature shakes to laid-back café corners, this is the look and feel of your next chai break.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-card" data-full="images/food-1.jpg"><img src="images/food-1.jpg" alt="Tealogy Cafe food platter" loading="lazy"><span>Food</span></div>
+        <div class="gallery-card" data-full="images/food-2.jpg"><img src="images/food-2.jpg" alt="Tealogy Cafe fries on platter" loading="lazy"><span>Fries</span></div>
+        <div class="gallery-card" data-full="images/food-3.jpg"><img src="images/food-3.jpg" alt="Tealogy Cafe masala sandwich" loading="lazy"><span>Snacks</span></div>
+        <div class="gallery-card" data-full="images/food-4.jpg"><img src="images/food-4.jpg" alt="Tealogy Cafe cafe platter" loading="lazy"><span>Platter</span></div>
+
+        <div class="gallery-card" data-full="images/drink-1.jpg"><img src="images/drink-1.jpg" alt="Tealogy Cafe mango shake" loading="lazy"><span>Shake</span></div>
+        <div class="gallery-card" data-full="images/drink-2.jpg"><img src="images/drink-2.jpg" alt="Tealogy Cafe strawberry cooler" loading="lazy"><span>Cooler</span></div>
+        <div class="gallery-card" data-full="images/drink-3.jpg"><img src="images/drink-3.jpg" alt="Tealogy Cafe chilled drink" loading="lazy"><span>Cold</span></div>
+        <div class="gallery-card" data-full="images/drink-4.jpg"><img src="images/drink-4.jpg" alt="Tealogy Cafe masala chai" loading="lazy"><span>Chai</span></div>
+
+        <div class="gallery-card" data-full="images/ambience-1.jpg"><img src="images/ambience-1.jpg" alt="Tealogy Cafe exterior" loading="lazy"><span>Exterior</span></div>
+        <div class="gallery-card" data-full="images/ambience-2.jpg"><img src="images/ambience-2.jpg" alt="Tealogy Cafe interior" loading="lazy"><span>Interior</span></div>
+        <div class="gallery-card" data-full="images/ambience-3.jpg"><img src="images/ambience-3.jpg" alt="Tealogy Cafe seating" loading="lazy"><span>Seating</span></div>
+        <div class="gallery-card" data-full="images/ambience-4.jpg"><img src="images/ambience-4.jpg" alt="Tealogy Cafe storefront sign" loading="lazy"><span>Brand</span></div>
+      </div>
+    </div>
+  </section>
+
   <section>
     <div class="wrap">
       <div class="combos">
@@ -369,4 +411,223 @@
   </section>
 
   <section id="booking">
-    <div class="
+    <div class="wrap booking-grid">
+      <div class="booking-side">
+        <div class="section-head" style="margin-bottom:22px;">
+          <p class="eyebrow-plain">Reserve ahead</p>
+          <h2>Book a table</h2>
+          <p>Fill this in and it opens WhatsApp with your details ready to send — we'll confirm the table back to you there.</p>
+        </div>
+        <div class="visit-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <div><h4>Best for groups</h4><p>Give us at least a few hours' notice for tables of 5 or more.</p></div>
+        </div>
+        <div class="visit-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92Z"/></svg>
+          <div><h4>Prefer to talk?</h4><p>Call 070071 13943 directly and we'll pencil you in.</p></div>
+        </div>
+      </div>
+
+      <form class="booking-form" id="bookingForm">
+        <div class="form-row">
+          <div class="field">
+            <label for="bName">Name</label>
+            <input type="text" id="bName" required placeholder="Your name">
+          </div>
+          <div class="field">
+            <label for="bPhone">Phone</label>
+            <input type="tel" id="bPhone" required placeholder="10-digit number">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="bDate">Date</label>
+            <input type="date" id="bDate" required>
+          </div>
+          <div class="field">
+            <label for="bTime">Time</label>
+            <input type="time" id="bTime" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="bGuests">Guests</label>
+          <select id="bGuests">
+            <option>1</option><option>2</option><option selected>3</option><option>4</option>
+            <option>5</option><option>6</option><option>7+</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="bNotes">Notes (optional)</label>
+          <textarea id="bNotes" placeholder="Outdoor seating, birthday, anything else we should know"></textarea>
+        </div>
+        <p class="form-hint">This doesn't submit automatically — it opens WhatsApp with your booking filled in, ready to send.</p>
+        <button type="submit" class="btn btn-primary btn-block">Send booking on WhatsApp</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="visit">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow-plain">Find us</p>
+        <h2>Come in, or send us a message</h2>
+      </div>
+      <div class="visit-grid">
+        <div class="visit-card">
+          <div class="visit-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><h4>Address</h4><p>D 15, 16, UPSIDA Industrial Area, Chakeri Ward, Ruma, Kanpur, Uttar Pradesh 209402</p></div>
+          </div>
+          <div class="visit-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div><h4>Hours</h4><p>Open daily from 9 AM. Call ahead if you're planning a late visit.</p></div>
+          </div>
+          <div class="visit-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92Z"/></svg>
+            <div><h4>Call or WhatsApp</h4><p>070071 13943 — for bookings or a quick question.</p></div>
+          </div>
+          <div class="visit-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 17.27 6.18 3.73-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <div><h4>Rating</h4><p>4.8 out of 5 from 47 Google reviews.</p></div>
+          </div>
+          <div style="display:flex; gap:10px; margin-top:20px;">
+            <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=Tealogy+Cafe+UPSIDA+Industrial+Area+Chakeri+Ward+Ruma+Kanpur" target="_blank" rel="noopener">Get directions</a>
+            <a class="btn btn-ghost" href="tel:+917007113943">Call now</a>
+          </div>
+        </div>
+        <div class="map-frame">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <p>D 15, 16, UPSIDA Industrial Area, Chakeri Ward, Ruma, Kanpur — 209402</p>
+          <a class="btn btn-marigold btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=Tealogy+Cafe+UPSIDA+Industrial+Area+Chakeri+Ward+Ruma+Kanpur" target="_blank" rel="noopener">Open in Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="foot-brand">Tealogy Cafe</p>
+    <p>D 15, 16, UPSIDA Industrial Area, Chakeri Ward, Ruma, Kanpur, UP 209402 · 070071 13943</p>
+    <p id="year"></p>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox-content">
+    <button class="lightbox-close" aria-label="Close">×</button>
+    <img id="lightboxImage" src="" alt="Tealogy Cafe gallery image">
+  </div>
+</div>
+
+<script>
+  document.getElementById('year').textContent = '© ' + new Date().getFullYear() + ' Tealogy Cafe.';
+
+  const MENU = [
+    {c:'Chai',n:'Cutting Chai',p:20},{c:'Chai',n:'Adrak Tea',p:20},{c:'Chai',n:'Masala Tea',p:20},
+    {c:'Chai',n:'Elaichi Tea',p:25},{c:'Chai',n:'Gud Wali Chai',p:25},{c:'Chai',n:'Baarish Wali Chai',p:25},
+    {c:'Chai',n:'Kesar Badam Milk (Hot)',p:59},{c:'Chai',n:'Lemon Mint Iced Tea',p:59},
+    {c:'Flavoured Tea',n:'Chocolate Tea',p:20},{c:'Flavoured Tea',n:'Paan Tea',p:20},{c:'Flavoured Tea',n:'Kesar Tea',p:20},
+    {c:'Flavoured Tea',n:'Rose Tea',p:20},{c:'Flavoured Tea',n:'Mango Tea',p:20},
+    {c:'Coffee',n:'Black Coffee',p:20},{c:'Coffee',n:'Hot Coffee',p:25},{c:'Coffee',n:'Chocolate Hot Coffee',p:30},
+    {c:'Coffee',n:'Cold Coffee',p:79},{c:'Coffee',n:'Chocolate Cold Coffee',p:89},{c:'Coffee',n:'Cold Coffee with Ice Cream',p:89},
+    {c:'Shakes',n:'Chocolate Shake',p:79},{c:'Shakes',n:'Oreo Shake',p:79},{c:'Shakes',n:'Kit Kat Shake',p:79},{c:'Shakes',n:'Brownie Shake',p:89},
+    {c:'Shakes',n:'Kiwi Shake',p:79},{c:'Shakes',n:'Mango Shake',p:79},{c:'Shakes',n:'Strawberry Shake',p:79},
+    {c:'Shakes',n:'Blueberry Shake',p:89},{c:'Shakes',n:'Chiku Milkshake',p:109},{c:'Shakes',n:'Kesar Thandaai Milkshake',p:109},
+    {c:'Shakes',n:'Mango Cheesecake Shake',p:149},{c:'Shakes',n:'Blueberry Cheesecake Shake',p:149},{c:'Shakes',n:'Strawberry Cheesecake Shake',p:149},
+    {c:'Coolers',n:'Classic Jeeru',p:49},{c:'Coolers',n:'Masala Lemonade',p:59},{c:'Coolers',n:'Shikanji',p:59},{c:'Coolers',n:'Chilli Guava',p:69},
+    {c:'Snacks',n:'Butter Toast',p:39},{c:'Snacks',n:'Maska Bun',p:39},{c:'Snacks',n:'French Fries',p:69},
+    {c:'Snacks',n:'Potato Shots',p:69},{c:'Snacks',n:'Peri Peri French Fries',p:89},{c:'Snacks',n:'Ice Crush (Kiwi/Blueberry/Strawberry)',p:59},
+    {c:'Maggi',n:'Masala Maggi',p:49},{c:'Maggi',n:'Vegetable Maggi',p:59},{c:'Maggi',n:'Cheese Corn Maggi',p:79},
+    {c:'Sandwiches',n:'Coleslaw Sandwich',p:49},{c:'Sandwiches',n:'Masala Sandwich',p:49},{c:'Sandwiches',n:'Cheese Chutney Sandwich',p:69},
+    {c:'Sandwiches',n:'Cheese Corn Sandwich',p:69},{c:'Sandwiches',n:'Chocolate Sandwich',p:79},{c:'Sandwiches',n:'Vegetable Club Sandwich',p:79},
+    {c:'Rice Bowls',n:'Dal Chawal',p:129},{c:'Rice Bowls',n:'Butter Khichdi',p:139},{c:'Rice Bowls',n:'Rajma Rice',p:139},
+    {c:'Rice Bowls',n:'Dal Makhani with Rice',p:179},{c:'Rice Bowls',n:'Paneer Butter Masala with Rice',p:179},
+    {c:'Desi Bites',n:'Vada Pav',p:20},{c:'Desi Bites',n:'Dabeli',p:29},{c:'Desi Bites',n:'Indori Poha',p:49},
+    {c:'Desi Bites',n:'Dry Fruit Upma Mix',p:69},{c:'Desi Bites',n:'Masala Oats Meal',p:79}
+  ];
+
+  const COMBOS = [
+    {n:'Butter Toast + Chai',p:49},{n:'Bun Maska + Chai',p:49},{n:'Masala Tea + Fries',p:79},
+    {n:'Masala Sandwich + Cold Coffee',p:119},{n:'Masala Maggi + Mango Shake',p:119}
+  ];
+
+  const CATS = ['Chai','Flavoured Tea','Coffee','Shakes','Coolers','Snacks','Maggi','Sandwiches','Rice Bowls','Desi Bites'];
+  let activeCat = 'Chai';
+
+  const tabsEl = document.getElementById('tabs');
+  CATS.forEach(cat=>{
+    const b = document.createElement('button');
+    b.className = 'tab' + (cat===activeCat ? ' active' : '');
+    b.textContent = cat;
+    b.dataset.cat = cat;
+    b.onclick = ()=>{ activeCat = cat; renderTabs(); renderGrid(); };
+    tabsEl.appendChild(b);
+  });
+  function renderTabs(){
+    [...tabsEl.children].forEach(b=> b.classList.toggle('active', b.dataset.cat===activeCat));
+  }
+
+  const gridEl = document.getElementById('menuGrid');
+  function renderGrid(){
+    gridEl.innerHTML = MENU.filter(it=>it.c===activeCat).map(it=>`
+      <div class="item"><h4>${it.n}</h4><div class="price">₹${it.p}</div></div>
+    `).join('');
+  }
+  renderTabs();
+  renderGrid();
+
+  const comboGridEl = document.getElementById('comboGrid');
+  comboGridEl.innerHTML = COMBOS.map(it=>`
+    <div class="combo-card"><h4>${it.n}</h4><div class="price">₹${it.p}</div></div>
+  `).join('');
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightboxImage');
+  const closeBtn = document.querySelector('.lightbox-close');
+
+  document.querySelectorAll('.gallery-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const src = card.dataset.full;
+      lightboxImage.src = src;
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+    });
+  });
+
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightboxImage.src = '';
+  }
+
+  closeBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  document.getElementById('bookingForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('bName').value.trim();
+    const phone = document.getElementById('bPhone').value.trim();
+    const date = document.getElementById('bDate').value;
+    const time = document.getElementById('bTime').value;
+    const guests = document.getElementById('bGuests').value;
+    const notes = document.getElementById('bNotes').value.trim();
+
+    let msg = `Hi Tealogy Cafe! I'd like to book a table.%0a`;
+    msg += `Name: ${name}%0a`;
+    msg += `Phone: ${phone}%0a`;
+    msg += `Date: ${date}%0a`;
+    msg += `Time: ${time}%0a`;
+    msg += `Guests: ${guests}`;
+    if (notes) msg += `%0aNotes: ${notes}`;
+
+    window.open('https://wa.me/917007113943?text=' + msg, '_blank');
+  });
+</script>
+</body>
+</html>
